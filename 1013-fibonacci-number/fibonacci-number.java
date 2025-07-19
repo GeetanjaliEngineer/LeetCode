@@ -1,21 +1,12 @@
 class Solution {
+    int[] dp = new int[100];
     public int fib(int n) {
-        if (n == 0) {
-            return 0;
-        } else if (n == 1) {
-            return 1;
-        }
+        if (n <= 1) return n;
+       if ( dp[n]!= 0) return dp[n];
         
-        int firstTerm = 0;
-        int secondTerm = 1;
-        int thirdTerm = 0;
-        
-        for (int i = 2; i <= n; i++) {
-            thirdTerm = firstTerm + secondTerm;
-            firstTerm = secondTerm;
-            secondTerm = thirdTerm;
-        }
-        
-        return thirdTerm;
-    }
+        dp[n]= fib(n-1) + fib(n-2);
+    
+    return dp[n];
+}
+
 }
