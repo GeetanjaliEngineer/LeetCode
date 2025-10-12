@@ -18,20 +18,19 @@ class Solution {
         // slow.next = null to cut remaning duplicates
         //base case 
         if(head == null) return null;
-         ListNode slow =head;
-         ListNode fast =head;
-
-         while(fast != null){
-            if(slow.val != fast.val){
-                //move ahead
-                slow.next=fast;
-                slow=slow.next;
+        ListNode slow = head;
+        ListNode fast = head;
+        while(fast != null ){
+            if(fast.val != slow.val){
+                slow.next = fast;
+                slow = slow.next;
             }
-            fast=fast.next; // fast+1
-         }
-         //null to cut duplicates
-         slow.next = null;
-         return head;
+            fast = fast.next;
 
+        }
+        slow.next = null;
+        return head;
+
+       
     }
 }
