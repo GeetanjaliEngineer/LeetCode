@@ -1,12 +1,13 @@
 class Solution {
     public char repeatedCharacter(String s) {
-        boolean[] seen = new boolean[256];
-        for(char c : s.toCharArray()) {
-            if(seen[c]) {
-            return  c ;
+        boolean[] seen = new boolean[26];  // only lowercase letters
+
+        for (char ch : s.toCharArray()) {
+            if (seen[ch - 'a']) {
+                return ch;   // first repeated character
             }
-            seen[c] = true;
-        }  
-        return ' ';
-          }
+            seen[ch - 'a'] = true;
+        }
+        return ' '; // never reached as per problem constraints
+    }
 }
