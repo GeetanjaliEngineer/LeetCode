@@ -16,5 +16,4 @@ class Solution {
         // If target not found, 'left' will be the insert position
         return left;
     }
-
 }
