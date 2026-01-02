@@ -1,19 +1,25 @@
-class Solution {
+public class Solution {
     public boolean isPalindrome(String s) {
-        //Lowercase
-        //replaceAll
-        //loop - for 
-        //check if [s left] != s [n-1-i]
-        // return false } return true
-            s= s.toLowerCase();
-            s=   s.replaceAll("[^a-z0-9]", "");
-       //loop
-            int n = s.length();
-            for(int i=0; i<n/2; i++){
-                   if(s.charAt(i) != s.charAt(n-1-i)){
-                  return false;
-             }
-          }
-          return true;      
+        int left = 0, right = s.length() - 1;
+
+        while (left < right) {
+            // Move left to next alphanumeric
+            while (left < right && !Character.isLetterOrDigit(s.charAt(left))) {
+                left++;
+            }
+            // Move right to previous alphanumeric
+            while (left < right && !Character.isLetterOrDigit(s.charAt(right))) {
+                right--;
+            }
+
+            // Compare ignoring case
+            char cLeft = Character.toLowerCase(s.charAt(left));
+            char cRight = Character.toLowerCase(s.charAt(right));
+            if (cLeft != cRight) return false;
+
+            left++;
+            right--;
+        }
+        return true;
     }
 }
