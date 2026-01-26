@@ -10,27 +10,18 @@
  */
 class Solution {
     public ListNode deleteDuplicates(ListNode head) {
-        //logic - approach - Two pointer approacch 
-        //slow and fast pointer on head [1,1,2]
-        //base case if  head == null = return null 
-        //slow and fast moves one by one 
-        // if fast.val != slow.val.. slow.next = fast  and slow to fast -- move
-        // slow.next = null to cut remaning duplicates
-        //base case 
-        if(head == null) return null;
-        ListNode slow = head;
-        ListNode fast = head;
-        while(fast != null ){
-            if(fast.val != slow.val){
-                slow.next = fast;
-                slow = slow.next;
+        if(head == null ) return null;
+
+        ListNode curr = head;
+        while( curr!= null && curr.next != null){
+            if(curr.val == curr.next.val){
+                curr.next = curr.next.next;
             }
-            fast = fast.next;
+            else{
+                curr= curr.next;
 
+            }
         }
-        slow.next = null;
-        return head;
-
-       
+return head;        
     }
 }
