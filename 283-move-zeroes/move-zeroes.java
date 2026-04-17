@@ -1,17 +1,14 @@
 class Solution {
     public void moveZeroes(int[] nums) {
-        int lastNonZeroFoundAt = 0;
-        
-        // Move non-zero elements forward
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] != 0) {
-                nums[lastNonZeroFoundAt++] = nums[i];
+            int j=0;
+            for(int i=0; i<nums.length; i++){
+                if(nums[i] != 0){
+                    int temp = nums[i];
+                    nums[i]= nums[j];
+                    nums[j] = temp;
+
+                    j++;
+                }
             }
-        }
-        
-        // Fill remaining positions with zeros
-        for (int i = lastNonZeroFoundAt; i < nums.length; i++) {
-            nums[i] = 0;
-        }
     }
 }
